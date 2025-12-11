@@ -1,1 +1,0 @@
-# shrana.github.io
