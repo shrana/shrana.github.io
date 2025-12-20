@@ -1054,6 +1054,65 @@ input, select, textarea {
 						}
 
 		}
+		#thermo .callout{
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin: 14px 0 18px;
+}
+
+#thermo .figure{
+  margin: 16px 0 18px;
+}
+
+#thermo .svg-wrap svg{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+#thermo svg rect,
+#thermo svg path{
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+}
+
+#thermo svg text{
+  fill: currentColor;
+  font-size: 18px;
+}
+
+#thermo .eq{
+  overflow-x: auto;
+  padding: 8px 0;
+}
+
+#thermo table.data{
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0 18px;
+}
+
+#thermo table.data th,
+#thermo table.data td{
+  text-align: left;
+  padding: 10px 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  vertical-align: top;
+}
+
+#thermo ul.sources{
+  padding-left: 18px;
+}
+
+.posts article .image.fit img {
+  max-width: 70%;      /* shrink image */
+  margin: 0 auto;      /* center it */
+  display: block;
+  border-radius: 12px; /* optional: softer look */
+}
+
 
 		@media screen and (max-width: 980px) {
 

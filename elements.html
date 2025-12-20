@@ -1,16 +1,16 @@
 <!DOCTYPE HTML>
-<!--
-	Massively by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
-		<title>Elements Reference - Massively by HTML5 UP</title>
+		<title>Elements Reference</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script>
+  window.MathJax = { tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] } };
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
 	</head>
 	<body class="is-preload">
 
@@ -65,15 +65,227 @@
 
 <section id="air-fryer">
     <h2>Air Fryer Dissection</h2>
-    <p>Here is a video of the analysis of the fluid dynamical workings of an air fryer. My primary contribution was to the mathematics behind airfoil 2, taking apart the air fryer fully, and making the video. Enjoy!</p>
+    <p>Here is a video of the analysis of the fluid dynamical workings of an air fryer. My primary contribution was to the mathematics behind airfoil 2, taking apart the air fryer fully, and making the video (editing it together as well as presenting in the video). Enjoy!</p>
 	<div class="video-container">
   <iframe width="560" height="315" src="https://www.youtube.com/embed/nZxj0oJAFd0?si=cDvY2F4yxTrmceoK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 </section>
 <section id="thermo">
-    <h2>Thermodynamics Project</h2>
-    <p>In progress</p>
-</section>
+  <h2>Thermodynamics Project</h2>
+
+<h3>Thermodynamic Analysis of the Kidde Pro 10 CDM-4 CO₂ Fire Extinguisher</h3>
+
+<p>
+  In this project, I looked at how a real fire extinguisher behaves during discharge,
+  specifically the <strong>Kidde Pro 10 CDM-4</strong>. This is a 10 lb carbon dioxide extinguisher
+  used for Class B and Class C fires. I picked this device because it is mechanically simple,
+  but it still shows several thermodynamics concepts from class very clearly, especially
+  throttling and phase change during rapid expansion.
+</p>
+
+<div class="callout">
+  <p><strong>Device analyzed:</strong> Kidde Pro 10 CDM-4 (10 lb CO₂)</p>
+  <p><strong>Manufacturer data used:</strong> Operating pressure ≈ 850 psi, discharge time 8 to 10 s, discharge range 3 to 8 ft</p>
+</div>
+
+<h3>1) System being modeled</h3>
+<p>
+  When the handle is pressed, CO₂ flows out of the high-pressure cylinder, through a valve,
+  and then into the discharge horn. The horn shapes the jet and helps spread the CO₂ over the fire.
+  During this process, the pressure drops very quickly across the valve.
+  From a thermodynamics point of view, the valve acts like a throttling device.
+  There is a large pressure drop, no useful work output, and very little heat transfer over the short discharge time.
+</p>
+
+<h3>2) Control volume and assumptions</h3>
+<p>
+  I modeled the valve and discharge horn together as a steady-flow control volume during the main
+  part of the discharge. This is a simplified model, but it captures the main behavior of the system
+  without getting lost in unnecessary detail.
+</p>
+
+<ul>
+  <li><strong>Steady flow:</strong> assumed during most of the 8 to 10 second discharge.</li>
+  <li><strong>Adiabatic behavior:</strong> \(\dot{Q} \approx 0\) due to the short discharge time.</li>
+  <li><strong>No shaft work:</strong> \(\dot{W}_s = 0\).</li>
+  <li><strong>Negligible elevation change:</strong> \(\Delta gz \approx 0\).</li>
+  <li><strong>Jet kinetic energy:</strong> increases significantly and is discussed qualitatively.</li>
+</ul>
+
+<figure class="figure">
+  <figcaption>
+    Control-volume sketch for the Kidde Pro 10 CDM-4 discharge. CO₂ expands from the cylinder,
+    passes through the valve, and exits through the horn at close to atmospheric pressure.
+  </figcaption>
+</figure>
+
+<h3>3) Governing equations</h3>
+<p>
+  The analysis starts with the steady-flow energy equation for a system with one inlet and one outlet:
+</p>
+
+<div class="eq">
+\[
+\dot{Q} - \dot{W}_s + \dot{m}\left(h_1 + \frac{V_1^2}{2} + gz_1\right)
+=
+\dot{m}\left(h_2 + \frac{V_2^2}{2} + gz_2\right)
+\]
+</div>
+
+<p>
+  Using the assumptions listed above, this equation simplifies. Heat transfer, shaft work,
+  and elevation effects can be neglected, and the inlet velocity is much smaller than the outlet velocity.
+  This gives:
+</p>
+
+<div class="eq">
+\[
+h_1 \approx h_2 + \frac{V_2^2}{2}
+\]
+</div>
+
+<p>
+  In many cases, the kinetic energy term is also ignored, which leads to the standard throttling result:
+</p>
+
+<div class="eq">
+\[
+h_1 \approx h_2
+\]
+</div>
+
+<p>
+  For CO₂, expanding from high pressure down to atmospheric pressure at roughly constant enthalpy
+  causes a large temperature drop and partial phase change. This explains why CO₂ extinguishers often
+  produce a white plume made up of very cold gas and dry ice particles.
+</p>
+
+<h3>4) Device data used</h3>
+<p>
+  The values below were taken from manufacturer and distributor documentation for this specific extinguisher model:
+</p>
+
+<table class="data">
+  <thead>
+    <tr>
+      <th>Quantity</th>
+      <th>Value</th>
+      <th>Use in analysis</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Model</td>
+      <td>Kidde Pro 10 CDM-4</td>
+      <td>Defines the exact device analyzed</td>
+    </tr>
+    <tr>
+      <td>CO₂ mass</td>
+      <td>10 lb (≈ 4.54 kg)</td>
+      <td>Used to estimate mass flow rate</td>
+    </tr>
+    <tr>
+      <td>Operating pressure</td>
+      <td>≈ 850 psi (≈ 5.86 MPa)</td>
+      <td>Initial state before throttling</td>
+    </tr>
+    <tr>
+      <td>Discharge time</td>
+      <td>8 to 10 s</td>
+      <td>Time scale of the discharge</td>
+    </tr>
+    <tr>
+      <td>Outlet pressure</td>
+      <td>≈ 1 atm</td>
+      <td>Final state after expansion</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>5) Estimated mass flow rate</h3>
+<p>
+  As a simple first estimate, the average mass flow rate can be found by assuming the CO₂
+  is released fairly evenly over the discharge time:
+</p>
+
+<div class="eq">
+\[
+\dot{m}_{\text{avg}} \approx \frac{4.54\ \text{kg}}{8 \text{ to } 10\ \text{s}}
+\approx 0.45 \text{ to } 0.57\ \text{kg/s}
+\]
+</div>
+
+<p>
+  This is a large mass flow rate for a handheld device and helps explain both the strong cooling
+  effect and the noticeable force of the jet during discharge.
+</p>
+
+<h3>6) Model limitations</h3>
+<p>
+  This throttling model captures the main thermodynamic behavior, but it does have limitations.
+  The discharge is not perfectly steady, and the cylinder cools as CO₂ leaves, which lowers the
+  internal pressure over time. Some of the fluid enthalpy is also converted into kinetic energy,
+  so the outlet enthalpy is not exactly the same as the inlet enthalpy.
+</p>
+
+<p>
+  A more detailed analysis would involve transient modeling and real CO₂ property data to track
+  temperature and phase changes throughout the discharge.
+</p>
+
+
+<h3>7) Sources</h3>
+  <ul class="sources">
+  <li>
+    <a href="https://kidde.com/products/fire-extinguishers/carbon-dioxide-fire-extinguisher-carbon-dioxide-10-cd" target="_blank" rel="noopener">
+      Kidde Pro 10 CDM-4 Carbon Dioxide Fire Extinguisher – Official Product Page
+    </a>
+  </li>
+
+  <li>
+    <a href="https://www.emergencylighting.com/products/26841/pro-10-cd-fire-extinguisher" target="_blank" rel="noopener">
+      Pro 10 CD Fire Extinguisher Specifications (Operating Pressure, Discharge Time, Range)
+    </a>
+  </li>
+
+  <li>
+    <a href="https://www.stewartsupply.com/kidde-proline-carbon-dioxide-fire-extinguishers-bc-type-carbon-dioxide-gas--1" target="_blank" rel="noopener">
+      Kidde ProLine CO₂ Fire Extinguisher Technical Listing
+    </a>
+  </li>
+
+  <li>
+    <a href="https://www.sc.edu/ehs/training/Fire/05_co2.htm" target="_blank" rel="noopener">
+      Carbon Dioxide Fire Extinguishers – Operating Principles and Cooling Effects
+    </a>
+  </li>
+
+  <li>
+    <a href="https://www.cws.com/en/fire-safety/news/how-does-co2-fire-extinguisher-work" target="_blank" rel="noopener">
+      How CO₂ Fire Extinguishers Work (Pressure Drop and Cooling Mechanism)
+    </a>
+  </li>
+
+  <li>
+    <a href="https://www.fps-eg.com/2021/05/carbon-dioxide-fire-extinguishers-co2.html" target="_blank" rel="noopener">
+      Carbon Dioxide Fire Extinguishers – Suppression and Expansion Behavior
+    </a>
+  </li>
+
+  <li>
+    <a href="https://en.wikipedia.org/wiki/Liquid_carbon_dioxide" target="_blank" rel="noopener">
+      Liquid Carbon Dioxide – Thermophysical Properties and Phase Behavior
+    </a>
+  </li>
+
+  <li>
+    <a href="https://en.wikipedia.org/wiki/Joule%E2%80%93Thomson_effect" target="_blank" rel="noopener">
+      Joule–Thomson Effect – Temperature Change During Throttling
+    </a>
+  </li>
+</ul>
+
+
 
 <section id="building">
     <h2>Seismic Feed-forward Control</h2>
